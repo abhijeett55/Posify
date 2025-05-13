@@ -5,7 +5,7 @@
 <!--        &lt;!&ndash; <item name="colorPrimary">@color/my_light_primary</item> &ndash;&gt;-->
 <!--    </style>-->
 
-    <style name="Theme.YourApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.YourApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Customize as needed -->
     </style>
 
