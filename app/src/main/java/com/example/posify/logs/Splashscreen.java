@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.posify.MainActivity;
 import com.example.posify.R;
+import com.example.posify.items.ItemsStorage;
 
 public class Splashscreen extends AppCompatActivity {
 
@@ -33,7 +34,7 @@ public class Splashscreen extends AppCompatActivity {
 
         //Default Intent
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Intent intent = new Intent(Splashscreen.this, MainActivity.class);
+            Intent intent = new Intent(Splashscreen.this, ItemsStorage.class);
             startActivity(intent);
             finish();
         }, 1300);
