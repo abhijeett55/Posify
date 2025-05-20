@@ -12,54 +12,52 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.posify.R;
-import com.example.posify.modal.FoodItem;
+import com.example.posify.modal.Order;
 
 import java.util.List;
 
 public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.OrderViewHolder> {
 
     public interface OnOrderClickListener {
-        void onOrderClick(FoodItem foodItem);
+        void onOrderClick(Order order);
     }
 
     private final Context context;
-    private final List<FoodItem> foodItems;
+    private final List<Order> orders;
     private final OnOrderClickListener orderClickListener;
 
-    public OrderItemAdapter(Context context, List<FoodItem> foodItems, OnOrderClickListener orderClickListener) {
+    public OrderItemAdapter(Context context, List<Order> orders, OnOrderClickListener orderClickListener) {
         this.context = context;
-        this.foodItems = foodItems;
+        this.orders = orders;
         this.orderClickListener = orderClickListener;
     }
 
     @NonNull
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // FIX: Use the correct item layout!
-        View view = LayoutInflater.from(context).inflate(R.layout., parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_food, parent, false);
         return new OrderViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
-        FoodItem foodItem = foodItems.get(position);
+        Order order = orders.get(position);
 
-        holder.textfoodname.setText(foodItem.getName());
-        holder.textfooddescription.setText(foodItem.getDescription());
-        holder.textfoodprice.setText(String.valueOf(foodItem.getPrice()));
+        holder.textfoodname.setText(order.getName());
+        holder.textfooddescription.setText(order.getDescription());
+        holder.textfoodprice.setText(String.format("₹%.2f", order.getPrice()));
 
-        // Optionally set image if you have a URL or resource
 
         holder.btnOrder.setOnClickListener(v -> {
             if (orderClickListener != null) {
-                orderClickListener.onOrderClick(foodItem);
+                orderClickListener.onOrderClick(order);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return foodItems.size();
+        return orders.size();
     }
 
     static class OrderViewHolder extends RecyclerView.ViewHolder {

@@ -28,7 +28,6 @@ import okhttp3.Response;
 public class PaymentPage extends AppCompatActivity {
 
     TextView orderDetails;
-//    String orderId = getIntent().getStringExtra("orders_id");
 
 
     @Override

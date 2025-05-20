@@ -13,4 +13,21 @@ public class Order {
         this.image_url = image_url;
     }
 
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public String getName() {
+        return  food_name;
+    }
+
+    public String getImageUrl() {
+        return image_url;
+    }
 }
