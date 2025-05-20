@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "737945114110",
+    "project_id": "posify-androd-project",
+    "storage_bucket": "posify-androd-project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737945114110:android:65d0fbb7e407d440d69caf",
+        "android_client_info": {
+          "package_name": "com.example.posify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDpVlqh1lWv6hHA-9FwaZ2tIwNZXkjTsI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

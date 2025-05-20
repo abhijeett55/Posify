@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Posify</string>
+    <string name="enter_item">Enter Items</string>
+    <string name="enter_id">Enter Batch Number</string>
+    <string name="enter_price">Enter Price\n</string>
+    <string name="enter_quantity">Enter Quantity</string>
+    <string name="show_all_items">Show Items\n</string>
+    <string name="delete">Delete Items\n</string>
+    <string name="update">Modify Items\n</string>
+    <string name="add">Add Items\n</string>
+    <string name="item_id">Item ID</string>
+    <string name="item_name">Item Name</string>
+    <string name="price">Price</string>
+    <string name="quantity">Quantity</string>
+
+
+    <string name="shared_preferences">RestaurantPreference</string>
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+    <string name="add_to_cart_btn">Add</string>
+    <string name="proceed_to_cart_btn">Proceed to Cart</string>
+    <string name="choose_from_menu_listed_below">Choose from menu listed below:</string>
+    <string name="ordering_from">Ordering From: </string>
+    <string name="place_order">Place Order (Rs)</string>
+
+
+    <string name="supabase_url">https://sfwkwfhdcxbtwqbulmzv.supabase.co</string>
+    <string name="supabase_api_key">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNmd2t3ZmhkY3hidHdxYnVsbXp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc1NDc3MjcsImV4cCI6MjA2MzEyMzcyN30.DaorlyXkgMhHx1qihtpCAXoWs5dntxWRDL7vCoQ8U0s</string>
+    <string name="order">Order</string>
+    <string name="food_image">Food image</string>
+    <string name="delicious_and_fresh">Delicious and fresh</string>
+    <string name="food_name">Food Name</string>
+    <string name="_5_99">$5.99</string>
+    <string name="fetching_order">Fetching Order ....</string>
+</resources>
