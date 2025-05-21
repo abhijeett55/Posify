@@ -8,6 +8,41 @@
     tools:context=".orders.OrderPage">
 
 
+    <LinearLayout
+        android:id="@+id/categoryButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/hotonestext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hot Ones"
+            />
+
+        <Button
+            android:id="@+id/buttonBurger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Burger" />
+
+        <Button
+            android:id="@+id/buttonPizza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pizza" />
+
+        <Button
+            android:id="@+id/buttonShowAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show All" />
+    </LinearLayout>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewFood"
