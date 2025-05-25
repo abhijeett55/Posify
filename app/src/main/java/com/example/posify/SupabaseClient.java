@@ -13,7 +13,11 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class SupabaseClient {
-    public static final String BASE_URL = "https://sfwkwfhdcxbtwqbulmzv.supabase.co";
+
+//    public static final String BASE_URL = "https://sfwkwfhdcxbtwqbulmzv.supabase.co";
+
+    public static final String BASE_URL = "https://sfwkwfhdcxbtwqbulmzv.supabase.co/rest/v1/";
+
     public static final String TABLE_NAME = "items";
     public static final String STORAGE_URL = "https://sfwkwfhdcxbtwqbulmzv.supabase.co/storage/v1/object/public/images/";
     public static final String API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNmd2t3ZmhkY3hidHdxYnVsbXp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc1NDc3MjcsImV4cCI6MjA2MzEyMzcyN30.DaorlyXkgMhHx1qihtpCAXoWs5dntxWRDL7vCoQ8U0s";

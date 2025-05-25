@@ -1,7 +1,6 @@
 package com.example.posify.orders;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -80,7 +79,7 @@ public class OrderPage extends AppCompatActivity {
                 JSONObject data = new JSONObject();
                 try {
                     data.put("item_name", order.getName());
-                    data.put("quantity", 1); // Replace with actual quantity if available
+                    data.put("quantity", 1);
                     data.put("price", order.getPrice());
                 } catch (JSONException e) {
                     e.printStackTrace();

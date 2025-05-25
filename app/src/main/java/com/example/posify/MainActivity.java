@@ -18,6 +18,7 @@
 
     import com.example.posify.items.ItemStoragePage;
     import com.example.posify.modal.ViewPagerAdapter;
+    import com.example.posify.orders.OrderPage;
     import com.example.posify.signin.LoginPage;
     import com.google.android.material.bottomnavigation.BottomNavigationView;
     import com.google.android.material.navigation.NavigationView;
@@ -76,7 +77,9 @@
             } else if (id == R.id.menu_storage) {
                 Intent intent = new Intent(this, ItemStoragePage.class);
                 startActivity(intent);
-
+            } else if (id == R.id.menu_order) {
+                    Intent intent = new Intent(this, OrderPage.class);
+                    startActivity(intent);
             } else if (id == R.id.menu_logout) {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(this, LoginPage.class);

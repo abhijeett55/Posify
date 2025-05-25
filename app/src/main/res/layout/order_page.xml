@@ -29,18 +29,24 @@
             android:id="@+id/buttonBurger"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background"
+            android:backgroundTint="@null"
             android:text="@string/burger" />
 
         <Button
             android:id="@+id/buttonPizza"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@null"
+            android:background="@drawable/rounded_background"
             android:text="@string/pizza" />
 
         <Button
             android:id="@+id/buttonShowAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@null"
+            android:background="@drawable/rounded_background"
             android:text="@string/show_all" />
     </LinearLayout>
 

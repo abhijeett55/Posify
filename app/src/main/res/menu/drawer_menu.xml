@@ -12,6 +12,11 @@
         android:title="Storage" />
 
     <item
+        android:id="@+id/menu_order"
+        android:icon="@drawable/ic_cart"
+        android:title="Order" />
+
+    <item
         android:id="@+id/menu_logout"
         android:icon="@drawable/logout"
         android:title="@string/logout" />
