@@ -20,6 +20,8 @@ public class FoodItem implements ListItem {
             this.category = category;
         }
 
+
+
         public int getId() {
             return id;
         }
@@ -43,7 +45,6 @@ public class FoodItem implements ListItem {
         public String getCategory() {
             return category;
         }
-
 
 
     @Override

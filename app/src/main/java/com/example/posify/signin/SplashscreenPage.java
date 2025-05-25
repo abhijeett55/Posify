@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.example.posify.R;
-import com.example.posify.orders.PaymentPage;
+
 
 @SuppressLint("CustomSplashScreen")
 public class SplashscreenPage extends AppCompatActivity {
@@ -30,13 +30,12 @@ public class SplashscreenPage extends AppCompatActivity {
         ImageView logo = findViewById(R.id.app_logo);
         Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
 
-        //animation
         logo.startAnimation(fadeIn);
 
 
         //Default Intent
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Intent intent = new Intent(SplashscreenPage.this, PaymentPage.class);
+            Intent intent = new Intent(SplashscreenPage.this, LoginPage.class);
             startActivity(intent);
             finish();
         }, 1300);

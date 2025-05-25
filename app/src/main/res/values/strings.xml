@@ -32,4 +32,23 @@
     <string name="food_name">Food Name</string>
     <string name="_5_99">$5.99</string>
     <string name="fetching_order">Fetching Order ....</string>
+    <string name="hot_ones">Hot Ones ?</string>
+    <string name="burger">Burger</string>
+    <string name="checkout">Checkout</string>
+    <string name="pizza">Pizza</string>
+    <string name="show_all">Show All</string>
+    <string name="your_cart">Your Cart</string>
+    <string name="app_logo">App Logo</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="new_user_register">New User? Register</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="logout">Logout</string>
+    <string name="orders">Orders</string>
+    <string name="todo">TODO</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 </resources>

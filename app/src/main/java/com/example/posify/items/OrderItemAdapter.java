@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.posify.R;
 import com.example.posify.modal.Order;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.OrderViewHolder> {
@@ -32,6 +33,17 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.Orde
         this.orderClickListener = orderClickListener;
     }
 
+    public List<Order> getSelectedOrders() {
+        List<Order> selectedOrders = new ArrayList<>();
+        for (Order order : orders) {
+            if (order.isSelected()) {
+                selectedOrders.add(order);
+            }
+        }
+        return selectedOrders;
+    }
+
+
     @NonNull
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -47,8 +59,10 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.Orde
         holder.textfooddescription.setText(order.getDescription());
         holder.textfoodprice.setText(String.format("₹%.2f", order.getPrice()));
 
-
         holder.btnOrder.setOnClickListener(v -> {
+            order.setSelected(!order.isSelected()); // toggle selection
+            holder.btnOrder.setText(order.isSelected() ? "Added" : "Order");
+
             if (orderClickListener != null) {
                 orderClickListener.onOrderClick(order);
             }

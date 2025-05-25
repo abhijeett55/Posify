@@ -26,7 +26,7 @@ public class OrderRepository {
 
     public static void sendOrder(Context context, Order order) {
         String url = SupabaseClient.BASE_URL + "orders";
-        List<Order> orderList = Collections.singletonList(order); // Send as array for PostgREST
+        List<Order> orderList = Collections.singletonList(order);
         String bodyJson = gson.toJson(orderList);
 
         RequestBody body = RequestBody.create(bodyJson, MediaType.parse("application/json"));

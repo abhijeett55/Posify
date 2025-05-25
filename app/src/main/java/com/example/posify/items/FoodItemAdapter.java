@@ -24,6 +24,9 @@ import java.util.List;
 
 public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHolder> {
     Context context;
+
+    public static final String SUPABASE_STORAGE_URL = "https://sfwkwfhdcxbtwqbulmzv.supabase.co/storage/v1/object/public/images/";
+
     List<FoodItem> items;
 
     public interface OnOrderClickListener {
@@ -75,8 +78,7 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
             holder.imageFood.setImageResource(R.drawable.placeholder_image);
         } else {
             Glide.with(context)
-                    .load(imageUrl.startsWith("http") ? imageUrl : SupabaseClient.BASE_URL + imageUrl)
-                    .placeholder(R.drawable.placeholder_image)
+                    .load(imageUrl.startsWith("http") ? imageUrl : SupabaseClient.STORAGE_URL + imageUrl)
                     .error(R.drawable.placeholder_image)
                     .into(holder.imageFood);
         }

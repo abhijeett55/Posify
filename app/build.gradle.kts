@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.glide)
     implementation(libs.okhttp)
+    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

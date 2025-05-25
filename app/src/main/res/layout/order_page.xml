@@ -20,26 +20,28 @@
             android:id="@+id/hotonestext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hot Ones"
+            android:layout_marginEnd="30dp"
+            android:text="@string/hot_ones"
+            android:textStyle="bold"
             />
 
         <Button
             android:id="@+id/buttonBurger"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Burger" />
+            android:text="@string/burger" />
 
         <Button
             android:id="@+id/buttonPizza"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pizza" />
+            android:text="@string/pizza" />
 
         <Button
             android:id="@+id/buttonShowAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Show All" />
+            android:text="@string/show_all" />
     </LinearLayout>
 
 
@@ -54,11 +56,12 @@
         android:id="@+id/buttonCheckout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Checkout"
+        android:text="@string/checkout"
         android:layout_margin="16dp"
         android:backgroundTint="@color/black"
         android:textColor="@android:color/white"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="VisualLintButtonSize" />
 
 
 

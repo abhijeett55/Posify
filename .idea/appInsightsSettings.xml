@@ -9,9 +9,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.example.posify" />
-                  <option name="mobileSdkAppId" value="1:1079605451184:android:db0f36d6650fcb8f611e75" />
-                  <option name="projectId" value="posify-77777" />
-                  <option name="projectNumber" value="1079605451184" />
+                  <option name="mobileSdkAppId" value="1:737945114110:android:65d0fbb7e407d440d69caf" />
+                  <option name="projectId" value="posify-androd-project" />
+                  <option name="projectNumber" value="737945114110" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

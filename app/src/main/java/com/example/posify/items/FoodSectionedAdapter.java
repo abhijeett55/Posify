@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,24 +15,30 @@ import com.bumptech.glide.Glide;
 import com.example.posify.R;
 import com.example.posify.modal.CategoryHeader;
 import com.example.posify.modal.FoodItem;
+import com.example.posify.modal.Order;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class FoodSectionedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class FoodSectionedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final Context context;
     private final List<ListItem> itemList;
+    private final List<Order> selectedOrders = new ArrayList<>();
 
     public FoodSectionedAdapter(Context context, List<ListItem> itemList) {
         this.context = context;
         this.itemList = itemList;
     }
 
+    public List<Order> getSelectedOrders() {
+        return selectedOrders;
+    }
+
     @Override
     public int getItemViewType(int position) {
         return itemList.get(position).getType();
     }
-
 
     @NonNull
     @Override
@@ -48,12 +54,12 @@ public class FoodSectionedAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        ListItem listItem = itemList.get(position);
         if (holder instanceof HeaderViewHolder) {
-            ((HeaderViewHolder) holder).bind((CategoryHeader) itemList.get(position));
-        } else {
-            ((FoodViewHolder) holder).bind((FoodItem) itemList.get(position));
+            ((HeaderViewHolder) holder).bind((CategoryHeader) listItem);
+        } else if (holder instanceof FoodViewHolder) {
+            ((FoodViewHolder) holder).bind((FoodItem) listItem);
         }
-
     }
 
     @Override
@@ -63,7 +69,6 @@ public class FoodSectionedAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     static class HeaderViewHolder extends RecyclerView.ViewHolder {
         TextView textCategory;
-
 
         public HeaderViewHolder(View itemView) {
             super(itemView);
@@ -75,10 +80,10 @@ public class FoodSectionedAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
     }
 
-    static class FoodViewHolder extends RecyclerView.ViewHolder {
+    class FoodViewHolder extends RecyclerView.ViewHolder {
         TextView name, description, price;
         ImageView image;
-        CheckBox checkbox;
+        Button btnAdd;
 
         public FoodViewHolder(View itemView) {
             super(itemView);
@@ -86,14 +91,29 @@ public class FoodSectionedAdapter extends RecyclerView.Adapter<RecyclerView.View
             description = itemView.findViewById(R.id.textfooddescription);
             price = itemView.findViewById(R.id.textfoodprice);
             image = itemView.findViewById(R.id.imageFood);
+            btnAdd = itemView.findViewById(R.id.btnOrder); // make sure this ID matches your layout
         }
 
         void bind(FoodItem item) {
             name.setText(item.getName());
             description.setText(item.getDescription());
             price.setText("₹" + item.getPrice());
-
             Glide.with(itemView.getContext()).load(item.getImageUrl()).into(image);
+
+            Order order = new Order(item.getName(), item.getDescription(), item.getPrice());
+
+            // Update button state
+            btnAdd.setText(selectedOrders.contains(order) ? "Added" : "Add");
+
+            btnAdd.setOnClickListener(v -> {
+                if (!selectedOrders.contains(order)) {
+                    selectedOrders.add(order);
+                    btnAdd.setText("Added");
+                } else {
+                    selectedOrders.remove(order);
+                    btnAdd.setText("Add");
+                }
+            });
         }
     }
 }

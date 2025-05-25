@@ -18,6 +18,7 @@ loggingInterceptor = "5.0.0-alpha.14"
 recyclerview = "1.4.0"
 gson = "2.13.1"
 okhttp = "5.0.0-alpha.14"
+firebaseAuth = "23.2.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -39,6 +40,7 @@ gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 glide = "com.github.bumptech.glide:glide:5.0.0-rc01"
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 
 
 [plugins]

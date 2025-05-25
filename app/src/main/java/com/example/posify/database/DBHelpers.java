@@ -40,15 +40,17 @@ public class DBHelpers extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addItem(String name, double price, int quantity) {
+    public boolean addItem(String name, double price, int quantity, String timestamp) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(COL_NAME, name);
-        cv.put(COL_PRICE, price);
-        cv.put(COL_QUANTITY, quantity);
-        long result = db.insert(TABLE_NAME, null, cv);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", name);
+        contentValues.put("price", price);
+        contentValues.put("quantity", quantity);
+        contentValues.put("timestamp", timestamp);
+        long result = db.insert("items", null, contentValues);
         return result != -1;
     }
+
 
     public boolean updateItem(int id, String name, double price, int quantity) {
         SQLiteDatabase db = this.getWritableDatabase();

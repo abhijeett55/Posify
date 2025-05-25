@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.posify.MainActivity;
+
 import com.example.posify.R;
 import com.example.posify.SupabaseClient;
 import com.example.posify.items.FoodSectionedAdapter;
@@ -21,7 +21,11 @@ import com.example.posify.modal.CategoryHeader;
 import com.example.posify.modal.FoodItem;
 
 
+import com.example.posify.modal.Order;
 import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,13 +72,59 @@ public class OrderPage extends AppCompatActivity {
 
     }
 
+    private void setupCheckoutButton() {
+        checkoutButton.setOnClickListener(v -> {
+            List<Order> selectedOrders = adapter.getSelectedOrders();
+
+            for (Order order : selectedOrders) {
+                JSONObject data = new JSONObject();
+                try {
+                    data.put("item_name", order.getName());
+                    data.put("quantity", 1); // Replace with actual quantity if available
+                    data.put("price", order.getPrice());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    continue;
+                }
+
+                Request request = SupabaseClient.addHeaders(
+                        new Request.Builder()
+                                .url(SupabaseClient.BASE_URL + "orders")
+                                .post(okhttp3.RequestBody.create(
+                                        data.toString(),
+                                        okhttp3.MediaType.parse("application/json")
+                                ))
+                ).build();
+
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        Log.e("Supabase", "Insert failed", e);
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                        if (response.isSuccessful()) {
+                            Log.d("Supabase", "Order saved: " + order.getName());
+                        } else {
+                            Log.e("Supabase", "Insert failed: " + response.code() + " - " + response.message());
+                        }
+                    }
+                });
+            }
+
+            Toast.makeText(OrderPage.this, "Orders sent to Supabase", Toast.LENGTH_SHORT).show();
+        });
+    }
+
+
     private void initViews() {
         recyclerView = findViewById(R.id.recyclerViewFood);
         checkoutButton = findViewById(R.id.buttonCheckout);
         burgerButton = findViewById(R.id.buttonBurger);
         pizzaButton = findViewById(R.id.buttonPizza);
         showAllButton = findViewById(R.id.buttonShowAll);
-        setFilterButtonsEnabled(true);
+        setFilterButtonsEnabled();
 
     }
 
@@ -84,13 +134,7 @@ public class OrderPage extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private void setupCheckoutButton() {
-        checkoutButton.setOnClickListener(v -> {
-            Intent intent = new Intent(OrderPage.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        });
-    }
+
 
     @SuppressLint("NotifyDataSetChanged")
     private void filterByCategory(String category) {
@@ -110,7 +154,6 @@ public class OrderPage extends AppCompatActivity {
 
         adapter.notifyDataSetChanged();
     }
-
     @SuppressLint("NotifyDataSetChanged")
     private void showAllItems() {
         sectionedItems.clear();
@@ -128,10 +171,10 @@ public class OrderPage extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    private void setFilterButtonsEnabled(boolean enabled) {
-        burgerButton.setEnabled(enabled);
-        pizzaButton.setEnabled(enabled);
-        showAllButton.setEnabled(enabled);
+    private void setFilterButtonsEnabled() {
+        burgerButton.setEnabled(true);
+        pizzaButton.setEnabled(true);
+        showAllButton.setEnabled(true);
     }
 
 
@@ -198,5 +241,8 @@ public class OrderPage extends AppCompatActivity {
                 }
             }
         });
+
+
+
     }
 }

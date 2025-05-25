@@ -1,26 +1,37 @@
 {
   "project_info": {
-    "project_number": "1079605451184",
-    "project_id": "posify-77777",
-    "storage_bucket": "posify-77777.firebasestorage.app"
+    "project_number": "737945114110",
+    "firebase_url": "https://posify-androd-project-default-rtdb.firebaseio.com",
+    "project_id": "posify-androd-project",
+    "storage_bucket": "posify-androd-project.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1079605451184:android:db0f36d6650fcb8f611e75",
+        "mobilesdk_app_id": "1:737945114110:android:65d0fbb7e407d440d69caf",
         "android_client_info": {
           "package_name": "com.example.posify"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "737945114110-gc5rq652tjn96vu3c18qgrie3h7iou95.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyAAv8XlfjMog_wiZdtMOtWlDJzvjHcL9n0"
+          "current_key": "AIzaSyCDpVlqh1lWv6hHA-9FwaZ2tIwNZXkjTsI"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737945114110-gc5rq652tjn96vu3c18qgrie3h7iou95.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
