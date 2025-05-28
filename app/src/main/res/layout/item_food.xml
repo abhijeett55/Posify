@@ -60,16 +60,57 @@
                 android:textColor="#1976D2"
                 android:textSize="16sp" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <Button
+                    android:id="@+id/buttonDecrease"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/button_border"
+                    android:backgroundTint="#EEEEEE"
+                    android:text="@string/neg"
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/textQuantity"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginHorizontal="8dp"
+                    android:textColor="#000" />
+
+                <Button
+                    android:id="@+id/buttonIncrease"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/button_border"
+                    android:backgroundTint="#EEEEEE"
+                    android:text="@string/pos"
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+
             <Button
                 android:id="@+id/btnOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="12dp"
                 android:backgroundTint="#1E88E5"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:text="@string/order"
                 android:textColor="@color/blue_10" />
+
 
         </LinearLayout>
 

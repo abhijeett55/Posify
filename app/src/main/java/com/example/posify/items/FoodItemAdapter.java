@@ -20,12 +20,13 @@ import com.example.posify.R;
 import com.example.posify.SupabaseClient;
 import com.example.posify.modal.FoodItem;
 
+
 import java.util.List;
 
 public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHolder> {
     Context context;
 
-    public static final String SUPABASE_STORAGE_URL = "https://sfwkwfhdcxbtwqbulmzv.supabase.co/storage/v1/object/public/images/";
+//    public static final String SUPABASE_STORAGE_URL = "https://sfwkwfhdcxbtwqbulmzv.supabase.co/storage/v1/object/public/images/";
 
     List<FoodItem> items;
 
@@ -38,24 +39,28 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
     }
 
 
-    private OnOrderClickListener orderClickListener;
     public FoodItemAdapter(Context context, List<FoodItem> items, OnOrderClickListener listener) {
         this.context = context;
         this.items = items;
-        this.orderClickListener = listener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView textQuantity;
         TextView name, price;
         ImageView imageFood;
-        Button orderButton;
+        Button buttonIncrease , buttonDecrease;
 
         public ViewHolder(View view) {
             super(view);
             imageFood = view.findViewById(R.id.imageFood);
             name = view.findViewById(R.id.textfoodname);
             price = view.findViewById(R.id.textfoodprice);
-            orderButton = view.findViewById(R.id.btnOrder);
+            textQuantity = view.findViewById(R.id.textQuantity);
+
+            buttonIncrease = view.findViewById(R.id.buttonIncrease);
+            buttonDecrease = view.findViewById(R.id.buttonDecrease);
+
+
         }
     }
 
@@ -83,9 +88,17 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
                     .into(holder.imageFood);
         }
 
-        holder.orderButton.setOnClickListener(v -> {
-            if (orderClickListener != null) {
-                orderClickListener.onOrderClick(item);
+        holder.buttonIncrease.setOnClickListener(v -> {
+            int quantity = Integer.parseInt(holder.textQuantity.getText().toString());
+            quantity++;
+            holder.textQuantity.setText(String.valueOf(quantity));
+        });
+
+        holder.buttonDecrease.setOnClickListener(v -> {
+            int quantity = Integer.parseInt(holder.textQuantity.getText().toString());
+            if (quantity > 1) {
+                quantity--;
+                holder.textQuantity.setText(String.valueOf(quantity));
             }
         });
 

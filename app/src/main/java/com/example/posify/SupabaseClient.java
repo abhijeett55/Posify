@@ -68,6 +68,17 @@ public class SupabaseClient {
         });
     }
 
+    public static void fetchDashboardData(Callback callback) {
+        String url = BASE_URL + "orders?select=amount,customer_id";
+
+        Request request = addHeaders(new Request.Builder()
+                .url(url)
+                .get())
+                .build();
+
+        client.newCall(request).enqueue(callback);
+    }
+
     public static Request.Builder addHeaders(Request.Builder builder) {
         return builder
                 .addHeader("apikey", API_KEY)

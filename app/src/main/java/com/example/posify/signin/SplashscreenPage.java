@@ -33,7 +33,7 @@ public class SplashscreenPage extends AppCompatActivity {
         logo.startAnimation(fadeIn);
 
 
-        //Default Intent
+
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             Intent intent = new Intent(SplashscreenPage.this, LoginPage.class);
             startActivity(intent);

@@ -51,4 +51,6 @@
     <string name="todo">TODO</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="neg">-</string>
+    <string name="pos">+</string>
 </resources>
