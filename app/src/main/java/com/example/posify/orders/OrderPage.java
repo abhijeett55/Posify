@@ -11,15 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.example.posify.R;
 import com.example.posify.SupabaseClient;
 import com.example.posify.items.FoodSectionedAdapter;
 import com.example.posify.items.ListItem;
 import com.example.posify.modal.CategoryHeader;
 import com.example.posify.modal.FoodItem;
-
-
 import com.example.posify.modal.Order;
 import com.google.gson.Gson;
 
@@ -28,7 +25,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,16 +37,12 @@ import okhttp3.Response;
 
 public class OrderPage extends AppCompatActivity {
 
-
     private static final String TAG = "OrderPage";
 
     private RecyclerView recyclerView;
     private Button checkoutButton;
 
-    private Button burgerButton, pizzaButton, showAllButton;
     private FoodItem[] allItems = new FoodItem[0];
-
-
     private final List<ListItem> sectionedItems = new ArrayList<>();
     private FoodSectionedAdapter adapter;
     private final OkHttpClient client = new OkHttpClient();
@@ -64,11 +56,6 @@ public class OrderPage extends AppCompatActivity {
         setupRecyclerView();
         setupCheckoutButton();
         fetchFoodItems();
-
-        burgerButton.setOnClickListener(v -> filterByCategory("Burger"));
-        pizzaButton.setOnClickListener(v -> filterByCategory("Pizza"));
-        showAllButton.setOnClickListener(v -> showAllItems());
-
     }
 
     private void setupCheckoutButton() {
@@ -81,6 +68,7 @@ public class OrderPage extends AppCompatActivity {
                     data.put("item_name", order.getName());
                     data.put("quantity", 1);
                     data.put("price", order.getPrice());
+                    data.put("imageUrl", order.getImageUrl());
                 } catch (JSONException e) {
                     e.printStackTrace();
                     continue;
@@ -116,15 +104,9 @@ public class OrderPage extends AppCompatActivity {
         });
     }
 
-
     private void initViews() {
         recyclerView = findViewById(R.id.recyclerViewFood);
         checkoutButton = findViewById(R.id.buttonCheckout);
-        burgerButton = findViewById(R.id.buttonBurger);
-        pizzaButton = findViewById(R.id.buttonPizza);
-        showAllButton = findViewById(R.id.buttonShowAll);
-        setFilterButtonsEnabled();
-
     }
 
     private void setupRecyclerView() {
@@ -132,52 +114,6 @@ public class OrderPage extends AppCompatActivity {
         adapter = new FoodSectionedAdapter(this, sectionedItems);
         recyclerView.setAdapter(adapter);
     }
-
-
-
-    @SuppressLint("NotifyDataSetChanged")
-    private void filterByCategory(String category) {
-        sectionedItems.clear();
-
-        Map<String, List<FoodItem>> grouped = new LinkedHashMap<>();
-        for (FoodItem item : allItems) {
-            if (item.getCategory().equalsIgnoreCase(category)) {
-                grouped.computeIfAbsent(item.getCategory(), k -> new ArrayList<>()).add(item);
-            }
-        }
-
-        for (Map.Entry<String, List<FoodItem>> entry : grouped.entrySet()) {
-            sectionedItems.add(new CategoryHeader(entry.getKey()));
-            sectionedItems.addAll(entry.getValue());
-        }
-
-        adapter.notifyDataSetChanged();
-    }
-    @SuppressLint("NotifyDataSetChanged")
-    private void showAllItems() {
-        sectionedItems.clear();
-
-        Map<String, List<FoodItem>> grouped = new LinkedHashMap<>();
-        for (FoodItem item : allItems) {
-            grouped.computeIfAbsent(item.getCategory(), k -> new ArrayList<>()).add(item);
-        }
-
-        for (Map.Entry<String, List<FoodItem>> entry : grouped.entrySet()) {
-            sectionedItems.add(new CategoryHeader(entry.getKey()));
-            sectionedItems.addAll(entry.getValue());
-        }
-
-        adapter.notifyDataSetChanged();
-    }
-
-    private void setFilterButtonsEnabled() {
-        burgerButton.setEnabled(true);
-        pizzaButton.setEnabled(true);
-        showAllButton.setEnabled(true);
-    }
-
-
-
 
     private void fetchFoodItems() {
         String url = SupabaseClient.BASE_URL + "food_items";
@@ -211,10 +147,11 @@ public class OrderPage extends AppCompatActivity {
                         );
                         return;
                     }
+
                     runOnUiThread(() -> {
                         sectionedItems.clear();
                         if (items != null) {
-                            allItems = items; // ✅ Store for filtering
+                            allItems = items;
 
                             Map<String, List<FoodItem>> grouped = new LinkedHashMap<>();
                             for (FoodItem item : items) {
@@ -226,10 +163,15 @@ public class OrderPage extends AppCompatActivity {
                                 sectionedItems.addAll(entry.getValue());
                             }
                         }
+
+
+
+
+
+
                         adapter.notifyDataSetChanged();
                         Toast.makeText(OrderPage.this, "Loaded " + sectionedItems.size() + " items", Toast.LENGTH_SHORT).show();
                     });
-
 
                 } else {
                     String errorBody = response.body().string();
@@ -240,8 +182,5 @@ public class OrderPage extends AppCompatActivity {
                 }
             }
         });
-
-
-
     }
 }

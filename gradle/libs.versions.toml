@@ -10,7 +10,7 @@ constraintlayout = "2.2.1"
 cardview = "1.0.0"
 firebaseFirestore = "25.1.4"
 googleServices = "4.4.2"
-firebaseBom = "33.13.0"
+firebaseBom = "33.15.0"
 firebaseAnalytics = "22.4.0"
 volley = "1.2.1"
 
@@ -19,12 +19,16 @@ recyclerview = "1.4.0"
 gson = "2.13.1"
 okhttp = "5.0.0-alpha.14"
 firebaseAuth = "23.2.1"
+bom = "3.2.0-beta-2"
+postgrestKt = "3.2.0-beta-2"
+retrofit = "3.0.0"
+apolloGraphql = "3.2.0-beta-2"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.7.1" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
@@ -34,13 +38,17 @@ google-services = { group = "com.google.gms", name = "google-services", version.
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
 volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
+logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version = "5.0.0-alpha.16" }
 recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 glide = "com.github.bumptech.glide:glide:5.0.0-rc01"
-okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version = "5.0.0-alpha.16" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+bom = { group = "io.github.jan-tennert.supabase", name = "bom", version.ref = "bom" }
+postgrest-kt = { group = "io.github.jan-tennert.supabase", name = "postgrest-kt", version.ref = "postgrestKt" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+apollo-graphql = { group = "io.github.jan-tennert.supabase", name = "apollo-graphql", version.ref = "apolloGraphql" }
 
 
 [plugins]

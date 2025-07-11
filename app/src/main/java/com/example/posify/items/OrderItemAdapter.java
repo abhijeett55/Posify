@@ -11,7 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.posify.R;
+import com.example.posify.SupabaseClient;
 import com.example.posify.modal.Order;
 
 import java.util.ArrayList;
@@ -58,6 +60,21 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.Orde
         holder.textfoodname.setText(order.getName());
         holder.textfooddescription.setText(order.getDescription());
         holder.textfoodprice.setText(String.format("₹%.2f", order.getPrice()));
+
+        String imageUrl = order.getImageUrl();
+
+        String finalUrl = (imageUrl != null && imageUrl.startsWith("http")) ? imageUrl
+                : (imageUrl != null ? SupabaseClient.STORAGE_URL + imageUrl : "");
+
+        if (imageUrl != null && !imageUrl.isEmpty()) {
+            Glide.with(context)
+                    .load(imageUrl.startsWith("http") ? imageUrl : SupabaseClient.STORAGE_URL + imageUrl)
+                    .placeholder(R.drawable.placeholder_image)
+                    .error(R.drawable.placeholder_image)
+                    .into(holder.imageFood);
+        } else {
+            holder.imageFood.setImageResource(R.drawable.placeholder_image);
+        }
 
         holder.btnOrder.setOnClickListener(v -> {
             order.setSelected(!order.isSelected()); // toggle selection

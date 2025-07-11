@@ -1,12 +1,15 @@
 package com.example.posify.modal;
 
 import com.example.posify.items.ListItem;
+import com.google.gson.annotations.SerializedName;
 
 public class FoodItem implements ListItem {
         private final int id;
         private final String name;
         private final String description;
         private final double price;
+
+        @SerializedName("image_url")
         private final String imageUrl;
 
         private final String category;
@@ -25,6 +28,7 @@ public class FoodItem implements ListItem {
         public int getId() {
             return id;
         }
+
 
         public String getImageUrl() {
             return imageUrl;

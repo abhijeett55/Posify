@@ -1,5 +1,7 @@
 package com.example.posify;
 
+import androidx.annotation.NonNull;
+
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -13,8 +15,6 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class SupabaseClient {
-
-//    public static final String BASE_URL = "https://sfwkwfhdcxbtwqbulmzv.supabase.co";
 
     public static final String BASE_URL = "https://sfwkwfhdcxbtwqbulmzv.supabase.co/rest/v1/";
 
@@ -54,12 +54,12 @@ public class SupabaseClient {
 
         client.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 e.printStackTrace(); // Network error
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if (!response.isSuccessful()) {
                     System.out.println("Insert failed: " + response.body().string());
                 }

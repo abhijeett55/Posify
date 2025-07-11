@@ -49,10 +49,10 @@ public class Order {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Order)) return false;
-        Order order = (Order) o;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Order order = (Order) obj;
         return Objects.equals(food_name, order.food_name);
     }
 
@@ -60,4 +60,6 @@ public class Order {
     public int hashCode() {
         return Objects.hash(food_name);
     }
+
+
 }

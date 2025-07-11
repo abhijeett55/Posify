@@ -60,7 +60,7 @@ public class CartFragment extends Fragment  {
 
         cartItems.clear();
 
-        cartItems.add(new FoodItem(1, "Cheese Burger", "Burger", 5.99, "Delicious cheeseburger" , "Burger" ));
+        cartItems.add(new FoodItem(1, "Cheese Burger", "Burger", 5.99, "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Pizza-3007395.jpg/960px-Pizza-3007395.jpg" , "Burger" ));
         cartItems.add(new FoodItem(2, "Pepperoni Pizza", "Pizza", 8.99, "Tasty pepperoni pizza" ,"Pizza"));
 
         adapter.notifyDataSetChanged();

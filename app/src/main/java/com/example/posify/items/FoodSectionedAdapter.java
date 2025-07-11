@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.posify.R;
+import com.example.posify.SupabaseClient;
 import com.example.posify.modal.CategoryHeader;
 import com.example.posify.modal.FoodItem;
 import com.example.posify.modal.Order;
@@ -98,7 +99,29 @@ public class FoodSectionedAdapter extends RecyclerView.Adapter<RecyclerView.View
             name.setText(item.getName());
             description.setText(item.getDescription());
             price.setText("₹" + item.getPrice());
-            Glide.with(itemView.getContext()).load(item.getImageUrl()).into(image);
+            String imageUrl = item.getImageUrl();
+
+            String finalUrl = (imageUrl != null && imageUrl.startsWith("http")) ? imageUrl
+                    : (imageUrl != null ? SupabaseClient.STORAGE_URL + imageUrl : "");
+
+            Glide.with(itemView.getContext())
+                    .load(finalUrl)
+                    .placeholder(R.drawable.placeholder_image)
+                    .error(R.drawable.placeholder_image)
+                    .into(image);
+
+
+
+
+
+
+//
+//            Glide.with(itemView.getContext())
+//                    .load(imageUrl.startsWith("http") ? imageUrl : SupabaseClient.STORAGE_URL + imageUrl)
+//                    .placeholder(R.drawable.placeholder_image)
+//                    .error(R.drawable.placeholder_image)
+//                    .into(image);
+
 
             Order order = new Order(item.getName(), item.getDescription(), item.getPrice());
 
@@ -106,14 +129,17 @@ public class FoodSectionedAdapter extends RecyclerView.Adapter<RecyclerView.View
             btnAdd.setText(selectedOrders.contains(order) ? "Added" : "Add");
 
             btnAdd.setOnClickListener(v -> {
-                if (!selectedOrders.contains(order)) {
-                    selectedOrders.add(order);
-                    btnAdd.setText("Added");
-                } else {
-                    selectedOrders.remove(order);
+                Order newOrder = new Order(item.getName(), item.getDescription(), (float) item.getPrice(), item.getImageUrl());
+                if (selectedOrders.contains(newOrder)) {
+                    selectedOrders.remove(newOrder);
                     btnAdd.setText("Add");
+                } else {
+                    selectedOrders.add(newOrder);
+                    btnAdd.setText("Added");
                 }
             });
+
+
         }
     }
 }
