@@ -1,3 +1,4 @@
+
 # 📍 PointOnScale – Android App with Firebase Auth & Supabase Storage
 
 **PointOnScale** is an Android application developed in Java that allows users to interact with points over a scalable surface (e.g. zoomable map, image, or canvas). It uses **Firebase Authentication** for secure login and **Supabase** for real-time data storage and retrieval.
@@ -32,26 +33,24 @@
 | Gradle         | Android Gradle Plugin |
 
 ---
----
 
 ## 📦 Project Structure
 
+```
 app/
 ├── activities/
-│ └── MainActivity.java
+│   └── MainActivity.java
 ├── fragments/
-│ └── AuthFragment.java
+│   └── AuthFragment.java
 ├── utils/
-│ └── SupabaseClient.java
+│   └── SupabaseClient.java
 ├── services/
-│ └── FirebaseAuthManager.java
+│   └── FirebaseAuthManager.java
 └── res/
-├── layout/
-├── drawable/
-└── values/
-
-
-
+    ├── layout/
+    ├── drawable/
+    └── values/
+```
 
 ---
 
@@ -60,6 +59,6 @@ app/
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/PointOnScale.git
+git clone https://github.com/abhijeett55/PointOnScale.git
 cd PointOnScale
-
+```
