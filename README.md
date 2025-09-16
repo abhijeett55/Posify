@@ -74,3 +74,30 @@ Download the google-services.json file and place it in:
 ```json
 app/google-services.json
 ```
+## 📖 Usage
+
+Launch the app.
+Register or login with Firebase Authentication.
+Tap/drag on the canvas to add points.
+Points will sync in real-time with Supabase.
+Logout and login on another device → your points will still be there!
+
+## ✅ Future Improvements
+Multi-user collaboration with shared canvases.
+Point grouping & labeling.
+Export/import points (CSV/JSON).
+Offline mode with local caching.
+Dark mode UI.
+
+## 🤝 Contributing
+
+Contributions are welcome!
+Fork the repository.
+Create a new branch:
+git checkout -b feature/your-feature
+Commit your changes:
+git commit -m "Added new feature"
+Push and open a Pull Request.
+
+## 👨‍💻 Author
+Abhijeet Biswas
