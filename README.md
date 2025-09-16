@@ -61,4 +61,16 @@ app/
 ```bash
 git clone https://github.com/abhijeett55/PointOnScale.git
 cd PointOnScale
-```
+
+### 2. Open in Android Studio
+
+Open the project in Android Studio (latest version recommended).
+Let Gradle sync and download dependencies.
+### 3. Firebase Configuration
+
+Go to Firebase Console
+Create a new Firebase project.
+Enable Firebase Authentication → Email/Password (and Google Sign-In if required).
+Download the google-services.json file and place it in:
+---json
+app/google-services.json
